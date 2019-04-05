@@ -1,0 +1,8 @@
+{
+  "name": "jubilant-spork",
+  "main": "app/index.js",
+  "version": "1.0.0",
+  "description": "",
+  "author": "Ardalan Samimi <ardalan@saturnfive.se>",
+  "private": true
+}
