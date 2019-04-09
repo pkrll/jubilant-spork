@@ -1,0 +1,5 @@
+PassengerBaseURI /
+PassengerAppRoot /home/veganvin/hook.saturnfive.se
+
+PassengerAppType node
+PassengerStartupFile server.js
