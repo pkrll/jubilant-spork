@@ -13,6 +13,7 @@ http.createServer((req, res) => {
 
 		if (req.headers['x-hub-signature'] == signature) {
 			exec('cd ' + path + ' && git pull');
+			exec('touch success.txt');
 		} else {
 			exec('touch fail.txt');
 		}
