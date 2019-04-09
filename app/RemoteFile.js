@@ -26,8 +26,14 @@ class RemoteFile {
 	 * @param  {String} path The path at which to save the file.
 	 */
 	download(url, path) {
-		const file = fs.createWriteStream(path);
-		https.get(url, (response) => response.pipe(file));
+		return new Promise((resolve, reject) => {
+			const file = fs.createWriteStream(path);
+			https.get(url, (response) => {
+				response.pipe(file);
+				response.on('end',      () => resolve(path));
+				response.on('error', error => reject(error));
+			});
+		});
 	}
 
 }
