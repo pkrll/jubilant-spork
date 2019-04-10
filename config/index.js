@@ -3,5 +3,5 @@ module.exports = {
 	rootDir: "caches/",
 	docDir: "posts/",
 	imgDir: "images/",
-	localRepo: "/home/veganvin/new.saturnfive.se/furry-potato"
+	localRepo: "/home/veganvin/saturnfive.se/furry-potato"
 };
