@@ -2,7 +2,7 @@
 const creds  = require('./config/credentials.json');
 const http   = require('http');
 const crypto = require('crypto');
-const exec = require('child_process').exec;
+const exec = require('child_process').execSync;
 const path = require('./config').localRepo;
 
 const buildSignature = (body) => {
@@ -30,9 +30,14 @@ http.createServer((req, res) => {
 		let status  = 404;
 
 		if (verifySignature(signature, body)) {
-			exec('cd ' + path + ' && git pull');
-			message = "Request received!";
-			status  = 200;
+			try {
+				exec('cd ' + path + ' && git pull', { timeout: 5000 });
+				message = "Request received!";
+				status  = 200;
+			} catch (error) {
+				message = error.message;
+				status  = 500;
+			}
 		}
 
 		res.writeHead(status, { "Content-Type": "text/plain" });
